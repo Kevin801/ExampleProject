@@ -9,33 +9,114 @@
     tools:context="com.example.android.flightoptimizer.MainActivity">
 
     <TextView
-        android:id="@+id/quantity"
+        android:id="@+id/header_string"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Input two airports from list:"
-        android:textAllCaps="true"
         android:layout_marginBottom="16dp"
-        />
+        android:text="Input two airports from list:"
+        android:textAllCaps="true" />
+
+    <LinearLayout
+        android:id="@+id/user_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3"
+        android:baselineAligned="true">
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            app:counterEnabled="true"
+            app:counterMaxLength="3">
+
+            <AutoCompleteTextView
+                android:id="@+id/user_input_origin"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="origin"
+                android:maxLines="1"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            app:counterEnabled="true"
+            app:counterMaxLength="3">
+
+            <AutoCompleteTextView
+                android:id="@+id/user_input_destination"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="destination"
+                android:maxLines="1" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            app:counterEnabled="true"
+            app:counterMaxLength="3">
+
+            <AutoCompleteTextView
+            android:id="@+id/user_input_carrier"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="carrier"
+                android:maxLines="1" />
+
+        </android.support.design.widget.TextInputLayout>
+
+    </LinearLayout>
 
     <Button
+        android:id="@+id/bestpath_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Find Best Path"
+        android:layout_below="@+id/user_input"
         android:layout_marginTop="16dp"
-        android:layout_below="@+id/quantity_text_view"
-        android:onClick="submitOrder"
-        android:layout_marginBottom="16dp"
-        />
+        android:onClick="findBestPath"
+        android:text="Find Best Path" />
 
     <TextView
-        android:id="@+id/bestpath_Value_view"
+        android:id="@+id/bestpath_output"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/bestpath_button"
         android:text=""
-        android:textSize="16sp"
         android:textColor="#000000"
-        android:layout_below="@+id/quantity"
-        />
+        android:textSize="16sp" />
 
+    <TextView
+        android:id="@+id/airport_list_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bestpath_output"
+        android:layout_marginTop="16dp"
+        android:text="List Of Airports: "
+        android:textAllCaps="true" />
+
+    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        tools:context="com.example.android.flightoptimizer.MainActivity">
+
+        <ListView
+            android:id="@+id/airport_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp" />
+    </LinearLayout>
 
 </android.widget.LinearLayout>
