@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="criteria_array">
+        <item>Price</item>
+        <item>Delay</item>
+        <item>Distance</item>
+        <item>Canceled</item>
+        <item>Time</item>
+    </string-array>
+</resources>

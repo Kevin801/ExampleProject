@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Flight Optimizer</string>
+    <string name="input_two_airports_from_list">Input two airports from list:</string>
+    <string name="origin">origin</string>
+    <string name="destination">destination</string>
+    <string name="carrier">carrier (optional)</string>
+    <string name="find_best_path">Find Best Path</string>
+    <string name="list_of_airports">List Of Airports:</string>
 </resources>

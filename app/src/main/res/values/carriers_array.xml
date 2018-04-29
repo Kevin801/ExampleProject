@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="carriers_array">
+        <item></item>
+        <item>AA</item>
+        <item>AS</item>
+        <item>B6</item>
+        <item>DL</item>
+        <item>EV</item>
+        <item>F9</item>
+        <item>FL</item>
+        <item>HA</item>
+        <item>MQ</item>
+        <item>NK</item>
+        <item>OO</item>
+        <item>UA</item>
+        <item>US</item>
+        <item>VX</item>
+        <item>WN</item>
+    </string-array>
+</resources>
