@@ -6,37 +6,39 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context="com.example.android.flightoptimizer.MainActivity">
+    tools:context="com.example.android.flightoptimizer.MainActivity"
+    android:focusableInTouchMode="true">
 
     <TextView
         android:id="@+id/header_string"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:text="Input two airports from list:"
-        android:textAllCaps="true" />
+        android:text="Choose two airports from list, and a criteria:"
+        android:textAllCaps="true"
+        />
 
     <LinearLayout
         android:id="@+id/user_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:baselineAligned="true"
         android:orientation="horizontal"
-        android:weightSum="3"
-        android:baselineAligned="true">
+        android:weightSum="3">
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="horizontal"
             app:counterEnabled="true"
-            app:counterMaxLength="3">
+            app:counterMaxLength="3" >
 
             <AutoCompleteTextView
                 android:id="@+id/user_input_origin"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="origin"
+                android:hint="@string/origin"
                 android:maxLines="1"/>
         </android.support.design.widget.TextInputLayout>
 
@@ -52,46 +54,55 @@
                 android:id="@+id/user_input_destination"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="destination"
-                android:maxLines="1" />
+                android:hint="@string/destination"
+                android:maxLines="1"/>
 
         </android.support.design.widget.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
+        <Spinner
+            android:id="@+id/criteria_spinner"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+        <TextView
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="horizontal"
-            app:counterEnabled="true"
-            app:counterMaxLength="3">
+            android:text="Carrier (optional): "
+            android:textSize="16sp" />
 
-            <AutoCompleteTextView
-            android:id="@+id/user_input_carrier"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="carrier"
-                android:maxLines="1" />
-
-        </android.support.design.widget.TextInputLayout>
-
+        <Spinner
+            android:id="@+id/carrier_spinner"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
     </LinearLayout>
+
 
     <Button
         android:id="@+id/bestpath_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/user_input"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="14sp"
         android:onClick="findBestPath"
-        android:text="Find Best Path" />
+        android:text="@string/find_best_path" />
 
     <TextView
         android:id="@+id/bestpath_output"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/bestpath_button"
-        android:text=""
-        android:textColor="#000000"
+        android:text="Output: "
         android:textSize="16sp" />
 
     <TextView
@@ -100,23 +111,14 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/bestpath_output"
         android:layout_marginTop="16dp"
-        android:text="List Of Airports: "
+        android:text="@string/list_of_airports"
         android:textAllCaps="true" />
 
-    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="16dp"
-        tools:context="com.example.android.flightoptimizer.MainActivity">
 
-        <ListView
-            android:id="@+id/airport_list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp" />
-    </LinearLayout>
+    <ListView
+        android:id="@+id/airport_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp" />
 
 </android.widget.LinearLayout>
