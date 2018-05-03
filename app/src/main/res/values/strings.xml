@@ -9,5 +9,9 @@
     <string name="description">
         Plug in an Airport\'s three character code into origin and destination and choose a criteria. If the carrier is specified, then it will only display Airports that have that carrier specified. The output will return a "Path Cost: 0" and a "Path: []" if there is no path from origin to destination.
     </string>
+    <string name="subtitle">Choose two airports from list, and a criteria:</string>
+    <string name="carrier_optional">Carrier (optional):</string>
+    <string name="view_airports_button">View Airports</string>
+    <string name="path_cost_and_path">Path Cost:  Path: []</string>
 
 </resources>

@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:text="Choose two airports from list, and a criteria:"
+            android:text="@string/subtitle"
             android:textAllCaps="true" />
 
         <LinearLayout
@@ -83,7 +83,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Carrier (optional): "
+                android:text="@string/carrier_optional"
                 android:textSize="16sp" />
 
             <Spinner
@@ -104,7 +104,6 @@
                 android:id="@+id/bestpath_button"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/user_input"
                 android:layout_marginBottom="16dp"
                 android:layout_marginTop="14sp"
                 android:layout_weight="1"
@@ -124,7 +123,7 @@
                 android:layout_marginTop="14sp"
                 android:layout_weight="1"
                 android:onClick="displayList"
-                android:text="View Airports" />
+                android:text="@string/view_airports_button" />
         </LinearLayout>
 
 
@@ -133,7 +132,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/bestpath_button"
-            android:text="Path Cost: \nPath: []"
+            android:text="@string/path_cost_and_path"
             android:textSize="16sp" />
 
         <TextView
