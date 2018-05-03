@@ -6,4 +6,8 @@
     <string name="carrier">carrier (optional)</string>
     <string name="find_best_path">Find Best Path</string>
     <string name="list_of_airports">List Of Airports:</string>
+    <string name="description">
+        Plug in an Airport\'s three character code into origin and destination and choose a criteria. If the carrier is specified, then it will only display Airports that have that carrier specified. The output will return a "Path Cost: 0" and a "Path: []" if there is no path from origin to destination.
+    </string>
+
 </resources>

@@ -1,124 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.widget.LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
-    tools:context="com.example.android.flightoptimizer.MainActivity"
-    android:focusableInTouchMode="true">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/header_string"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="Choose two airports from list, and a criteria:"
-        android:textAllCaps="true"
-        />
-
-    <LinearLayout
-        android:id="@+id/user_input"
+    <android.widget.LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:baselineAligned="true"
-        android:orientation="horizontal"
-        android:weightSum="3">
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:counterEnabled="true"
-            app:counterMaxLength="3" >
-
-            <AutoCompleteTextView
-                android:id="@+id/user_input_origin"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="@string/origin"
-                android:maxLines="1"/>
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            app:counterEnabled="true"
-            app:counterMaxLength="3">
-
-            <AutoCompleteTextView
-                android:id="@+id/user_input_destination"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="@string/destination"
-                android:maxLines="1"/>
-
-        </android.support.design.widget.TextInputLayout>
-
-        <Spinner
-            android:id="@+id/criteria_spinner"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="3">
+        android:layout_height="match_parent"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical"
+        android:padding="16dp"
+        tools:context="com.kevin801.flightproject.MainActivity">
 
         <TextView
-            android:layout_width="0dp"
+            android:id="@+id/header_string"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Carrier (optional): "
+            android:layout_marginBottom="16dp"
+            android:text="Choose two airports from list, and a criteria:"
+            android:textAllCaps="true" />
+
+        <LinearLayout
+            android:id="@+id/user_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:baselineAligned="true"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:counterEnabled="true"
+                app:counterMaxLength="3">
+
+                <AutoCompleteTextView
+                    android:id="@+id/user_input_origin"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/origin"
+                    android:imeOptions="actionNext"
+                    android:maxLines="1"
+                    android:singleLine="true" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                app:counterEnabled="true"
+                app:counterMaxLength="3">
+
+                <AutoCompleteTextView
+                    android:id="@+id/user_input_destination"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/destination"
+                    android:imeOptions="actionNext"
+                    android:maxLines="1"
+                    android:singleLine="true" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <Spinner
+                android:id="@+id/criteria_spinner"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="25sp"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Carrier (optional): "
+                android:textSize="16sp" />
+
+            <Spinner
+                android:id="@+id/carrier_spinner"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <Button
+                android:id="@+id/bestpath_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/user_input"
+                android:layout_marginBottom="16dp"
+                android:layout_marginTop="14sp"
+                android:layout_weight="1"
+                android:onClick="displayBestPath"
+                android:text="@string/find_best_path" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/view_list_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginTop="14sp"
+                android:layout_weight="1"
+                android:onClick="displayList"
+                android:text="View Airports" />
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/bestpath_output"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/bestpath_button"
+            android:text="Path Cost: \nPath: []"
             android:textSize="16sp" />
 
-        <Spinner
-            android:id="@+id/carrier_spinner"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
-    </LinearLayout>
+        <TextView
+            android:id="@+id/application_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/bestpath_output"
+            android:text="@string/description"
+            android:textSize="16sp" />
 
-
-    <Button
-        android:id="@+id/bestpath_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/user_input"
-        android:layout_marginBottom="16dp"
-        android:layout_marginTop="14sp"
-        android:onClick="findBestPath"
-        android:text="@string/find_best_path" />
-
-    <TextView
-        android:id="@+id/bestpath_output"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/bestpath_button"
-        android:text="Output: "
-        android:textSize="16sp" />
-
-    <TextView
-        android:id="@+id/airport_list_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/bestpath_output"
-        android:layout_marginTop="16dp"
-        android:text="@string/list_of_airports"
-        android:textAllCaps="true" />
-
-
-    <ListView
-        android:id="@+id/airport_list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp" />
-
-</android.widget.LinearLayout>
+    </android.widget.LinearLayout>
+</ScrollView>
