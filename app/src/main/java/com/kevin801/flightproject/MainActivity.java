@@ -6,17 +6,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.kevin801.flightoptimizer.R;
+import com.kevin801.flightproject.carrierlist.CarrierList;
+import com.kevin801.flightproject.flightoptimizer.BestPath;
+import com.kevin801.flightproject.flightoptimizer.FlightCriteria;
+import com.kevin801.flightproject.flightoptimizer.NetworkGraph;
+import com.kevin801.flightproject.airportsearch.AirportList;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -24,44 +26,55 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 /**
  * Where the xml and java files make connections
  */
 public class MainActivity extends Activity {
+    private HashMap<String, String> airportsMap;
+    private NetworkGraph airportGraph;
     private String[] AIRPORTS;
-    public HashMap<String, String> airportsMap = new HashMap<>();
-    private NetworkGraph airportGraph = null;
+    private String origin, destination, carrier;
     private int criteriaSelected;
-    private String origin, destination, carrier = "";
-    private boolean graphInitDidntRun = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        InputStream inputStream = getResources().openRawResource(R.raw.airports);
-        readInCSVAirports(inputStream);
+        airportsMap = new HashMap<>();
+        airportGraph = null;
+        origin = destination = carrier = "";
+
+        graphInit();
+        readInCSVAirports();
         setUpButton();
         setUpSpinners();
         setUpAutoComplete();
     }
 
-    private void graphInit() {
-        InputStream filePath = getResources().openRawResource(R.raw.flight_data_csv);
-        try (BufferedInputStream bufferedInput = new BufferedInputStream(filePath)) {
-            airportGraph = new NetworkGraph(bufferedInput);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+     private void readInCSVAirports() {
+        InputStream csvFile = getResources().openRawResource(R.raw.airports);
+
+        ArrayList<String> list = new ArrayList<>();
+        String splitBy = ",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)";
+        String line = "";
+
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(csvFile))) {
+            br.readLine(); // Skips first line
+            while ((line = br.readLine()) != null) {
+                String[] file = line.split(splitBy);
+                String airportFile = file[0];
+                String descriptionFile = file[1];
+
+                airportsMap.put(airportFile, descriptionFile);
+                list.add(airportFile);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        graphInitDidntRun = false;
+        AIRPORTS = list.toArray(new String[list.size()]);
     }
 
     private void setUpButton() {
@@ -69,9 +82,6 @@ public class MainActivity extends Activity {
         Button buttonBestPath = findViewById(R.id.bestpath_button);
         buttonBestPath.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (graphInitDidntRun) {
-                    graphInit();
-                }
                 // getting data from origin and destination
                 EditText originInput = findViewById(R.id.user_input_origin);
                 origin = originInput.getText().toString().toUpperCase();
@@ -123,20 +133,17 @@ public class MainActivity extends Activity {
         });
     }
 
-    public void displayBestPath(View view) {
-        // TODO put button info here.
+    private void graphInit() {
+        InputStream filePath = getResources().openRawResource(R.raw.flight_data);
+    
+        try (BufferedInputStream bufferedInput = new BufferedInputStream(filePath)) {
+            airportGraph = new NetworkGraph(bufferedInput);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    public void displayList(View view) {
-        Intent startAirportListView = new Intent(this, DisplayList.class);
-        startActivity(startAirportListView);
-    }
-
-    public HashMap<String, String> getAirportsMap() {
-        return airportsMap;
-    }
-
-    private void setUpSpinners() {
+     private void setUpSpinners() {
         // setup criteria spinner
         Spinner criteriaSpinner = findViewById(R.id.criteria_spinner);
         ArrayAdapter<CharSequence> spinnerAdapter =
@@ -168,25 +175,13 @@ public class MainActivity extends Activity {
         destAutoComp.setAdapter(adapter);
     }
 
-    private void readInCSVAirports(InputStream csvFile) {
-        ArrayList<String> list = new ArrayList<>();
-        String splitBy = ",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)";
-        String line = "";
-
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(csvFile))) {
-
-            br.readLine(); // Skips first line
-            while ((line = br.readLine()) != null) {
-                String[] file = line.split(splitBy);
-                String airportFile = file[0];
-                String descriptionFile = file[1];
-
-                airportsMap.put(airportFile, descriptionFile);
-                list.add(airportFile);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        AIRPORTS = list.toArray(new String[list.size()]);
+    public void displayAirportSearch(View view) {
+        Intent startAirportListView = new Intent(this, AirportList.class);
+        startActivity(startAirportListView);
+    }
+    
+    public void displayCarrierList(View view) {
+        Intent startCarrierListView = new Intent(this, CarrierList.class);
+        startActivity(startCarrierListView);
     }
 }

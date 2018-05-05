@@ -1,4 +1,4 @@
-package com.kevin801.flightproject;
+package com.kevin801.flightproject.airportsearch;
 
 public class Airport {
     private String name;
@@ -23,9 +23,5 @@ public class Airport {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public int compare(Airport a1, Airport a2) {
-        return (a1.name.toString().toLowerCase()).compareTo(a2.name.toString().toLowerCase());
     }
 }

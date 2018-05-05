@@ -83,7 +83,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/carrier_optional"
+                android:text="@string/carrier"
                 android:textSize="16sp" />
 
             <Spinner
@@ -92,7 +92,6 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
         </LinearLayout>
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -107,13 +106,17 @@
                 android:layout_marginBottom="16dp"
                 android:layout_marginTop="14sp"
                 android:layout_weight="1"
-                android:onClick="displayBestPath"
                 android:text="@string/find_best_path" />
 
-            <TextView
+            <Button
+                android:id="@+id/search_carrier"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_marginBottom="16dp"
+                android:layout_marginTop="14sp"
+                android:onClick="displayCarrierList"
+                android:layout_weight="1"
+                android:text="View carriers List" />
 
             <Button
                 android:id="@+id/view_list_button"
@@ -122,7 +125,7 @@
                 android:layout_marginBottom="16dp"
                 android:layout_marginTop="14sp"
                 android:layout_weight="1"
-                android:onClick="displayList"
+                android:onClick="displayAirportSearch"
                 android:text="@string/view_airports_button" />
         </LinearLayout>
 
@@ -133,7 +136,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/bestpath_button"
             android:text="@string/path_cost_and_path"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:paddingBottom="16dp"/>
 
         <TextView
             android:id="@+id/application_description"

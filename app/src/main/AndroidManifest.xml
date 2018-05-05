@@ -9,18 +9,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name="com.kevin801.flightproject.MainActivity">
+        <activity android:name="com.kevin801.flightproject.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.kevin801.flightproject.DisplayList"
-            android:label="List of Airports"
-            android:parentActivityName="com.kevin801.flightproject.MainActivity">
-        </activity>
+        <activity
+            android:name="com.kevin801.flightproject.airportsearch.AirportList"
+            android:label="Search for an Airport Code"
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name="com.kevin801.flightproject.carrierlist.CarrierList"></activity>
     </application>
 
 </manifest>

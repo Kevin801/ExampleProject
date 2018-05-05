@@ -1,4 +1,4 @@
-package com.kevin801.flightproject;
+package com.kevin801.flightproject.airportsearch;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -23,15 +23,13 @@ public class AirportListAdapter extends ArrayAdapter<Airport> {
         mContext = context;
         mResource = resource;
     }
-
+    
     @NonNull
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         String name = getItem(position).getName();
         String description = getItem(position).getDescription();
-
-        Airport airport = new Airport(name, description);
-
+        
         LayoutInflater inflater = LayoutInflater.from(mContext);
         convertView = inflater.inflate(mResource, parent, false);
 
