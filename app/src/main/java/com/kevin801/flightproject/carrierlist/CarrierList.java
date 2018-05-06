@@ -5,50 +5,27 @@ import android.os.Bundle;
 import android.widget.ListView;
 
 import com.kevin801.flightoptimizer.R;
-import com.kevin801.flightproject.airportsearch.Airport;
+import com.kevin801.flightproject.airportsearch.Row;
 import com.kevin801.flightproject.airportsearch.AirportListAdapter;
+import com.kevin801.flightproject.util.DataUtility;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class CarrierList extends AppCompatActivity {
-    ArrayList<Airport> carrierList;
-    ListView lvCarriers;
+    ArrayList<Row> carrierData;
     AirportListAdapter adapter;
+    ListView lvCarriers;
+    DataUtility utility;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_carrier_list);
-        carrierList = new ArrayList<>();
-        
-        init();
+        utility = new DataUtility(this);
+        carrierData = utility.csvToArrayList(R.raw.airlinecarriers);
         
         lvCarriers = (ListView) findViewById(R.id.list_of_carriers);
-        adapter = new AirportListAdapter(this, R.layout.item_layout, carrierList);
+        adapter = new AirportListAdapter(this, R.layout.item_layout, carrierData);
         lvCarriers.setAdapter(adapter);
-    }
-    
-    private void init() {
-        InputStream csvFile = getResources().openRawResource(R.raw.airlinecarriers);
-        String splitBy = ",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)";
-        String line;
-        
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(csvFile))) {
-            br.readLine(); // Skips first line
-            while ((line = br.readLine()) != null) {
-                String[] file = line.split(splitBy);
-                String carrierCode = file[0];
-                String carrierName = file[1];
-                
-                Airport airport = new Airport(carrierCode, carrierName);
-                carrierList.add(airport);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }

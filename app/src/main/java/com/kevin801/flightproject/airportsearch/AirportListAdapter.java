@@ -12,13 +12,12 @@ import com.kevin801.flightoptimizer.R;
 
 import java.util.ArrayList;
 
-public class AirportListAdapter extends ArrayAdapter<Airport> {
+public class AirportListAdapter extends ArrayAdapter<Row> {
 
-    private static final String TAG = "AirportListAdapter";
     private Context mContext;
     private int mResource;
 
-    public AirportListAdapter(Context context, int resource, ArrayList<Airport> objects) {
+    public AirportListAdapter(Context context, int resource, ArrayList<Row> objects) {
         super(context, resource, objects);
         mContext = context;
         mResource = resource;

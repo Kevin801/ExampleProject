@@ -7,7 +7,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:focusableInTouchMode="true"
         android:orientation="vertical"
         android:padding="16dp"
@@ -19,7 +19,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:text="@string/subtitle"
-            android:textAllCaps="true" />
+            android:textAllCaps="true"
+            android:textColor="@android:color/background_dark" />
 
         <LinearLayout
             android:id="@+id/user_input"
@@ -28,7 +29,7 @@
             android:layout_marginBottom="16dp"
             android:baselineAligned="true"
             android:orientation="horizontal"
-            android:weightSum="3">
+            android:weightSum="3" >
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -44,7 +45,8 @@
                     android:hint="@string/origin"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:textColor="@android:color/background_dark"/>
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -62,7 +64,8 @@
                     android:hint="@string/destination"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:textColor="@android:color/background_dark"/>
 
             </android.support.design.widget.TextInputLayout>
 
@@ -70,7 +73,8 @@
                 android:id="@+id/criteria_spinner"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:textColor="@android:color/background_dark"/>
         </LinearLayout>
 
         <LinearLayout
@@ -84,13 +88,15 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/carrier"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:textColor="@android:color/background_dark"/>
 
             <Spinner
                 android:id="@+id/carrier_spinner"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@android:color/background_dark" />
         </LinearLayout>
 
         <LinearLayout
@@ -106,7 +112,9 @@
                 android:layout_marginBottom="16dp"
                 android:layout_marginTop="14sp"
                 android:layout_weight="1"
-                android:text="@string/find_best_path" />
+                android:text="@string/button_best_path"
+                android:textColor="#26C411"
+                style="?android:attr/buttonBarButtonStyle" />
 
             <Button
                 android:id="@+id/search_carrier"
@@ -114,9 +122,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:layout_marginTop="14sp"
-                android:onClick="displayCarrierList"
                 android:layout_weight="1"
-                android:text="View carriers List" />
+                android:onClick="displayCarrierList"
+                android:text="@string/button_carrier"
+                android:textColor="@android:color/background_dark"
+                style="?android:attr/buttonBarButtonStyle" />
 
             <Button
                 android:id="@+id/view_list_button"
@@ -126,18 +136,20 @@
                 android:layout_marginTop="14sp"
                 android:layout_weight="1"
                 android:onClick="displayAirportSearch"
-                android:text="@string/view_airports_button" />
+                android:text="@string/button_search_airports"
+                android:textColor="@android:color/background_dark"
+                style="?android:attr/buttonBarButtonStyle"/>
         </LinearLayout>
-
 
         <TextView
             android:id="@+id/bestpath_output"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/bestpath_button"
-            android:text="@string/path_cost_and_path"
+            android:paddingBottom="16dp"
+            android:text="@string/display_cost"
             android:textSize="16sp"
-            android:paddingBottom="16dp"/>
+            android:textColor="@android:color/background_dark" />
 
         <TextView
             android:id="@+id/application_description"
@@ -145,7 +157,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/bestpath_output"
             android:text="@string/description"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:textColor="@android:color/background_dark"/>
 
     </android.widget.LinearLayout>
 </ScrollView>
